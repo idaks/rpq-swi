@@ -1,0 +1,21 @@
+% Labeled graph edges: e(From, Label, To)
+
+
+e(carey,"b",bacchus_marsh).
+e(coetzee,"b",south_africa).
+e(gordimer,"b",south_africa).
+e(neruda,"b",chile).
+
+e(carey,"w",booker).
+e(coetzee,"w",booker).
+e(coetzee,"w",nobel).
+e(gordimer,"w",booker).
+e(gordimer,"w",nobel).
+e(neruda,"w",nobel).
+
+e(coetzee,"i",australia).
+
+e(bacchus_marsh,"l",victoria).
+e(victoria,"l",australia).
+
+

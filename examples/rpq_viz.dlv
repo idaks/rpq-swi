@@ -1,0 +1,22 @@
+
+ans(X,L,Y) :- e(X,L,Y). 
+
+
+
+%viz("initial","color=green").
+%viz("b","color=green").
+% viz("w","color=blue").
+viz(L_conc_M,"style=dotted,color=blue,constraint=false") :-
+	conc(_,_,L_conc_M).
+
+viz(L_or_M,"style=dotted,color=forestgreen,constraint=false") :-
+ 	or(_,_,L_or_M).
+
+viz(L_plus,"style=dotted,color=red,constraint=false") :-
+ 	plus(_,L_plus).
+
+viz(L_star,"style=dotted,color=grey,constraint=false") :-
+ 	star(_,L_star).
+
+viz(R, "constraint=false") :-
+	derived(R).

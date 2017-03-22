@@ -1,0 +1,37 @@
+% ans(X,"<",Y) :-
+% 	before(X,Y).
+
+ans(X,L,Y) :-
+	e(X,L,Y),
+	X < 31, Y < 31,
+	derived(L).
+% ans(X,L,Y) :-
+% 	e(X,L,Y),
+% 	X < 31, Y < 31,
+% 	derived(L).
+				%, not derived(L).
+%ans(X,L,Y) :- e(X,L,Y), root(L).
+
+
+viz("x2","color=green").
+viz("x3","color=blue").
+viz("x5","color=red").
+
+viz(L_conc_M,"color=red,penwidth=4") :-
+	L_conc_M = "x2+.x3+.x5+",
+	conc(_,_,L_conc_M).
+viz(L_conc_M,"color=blue") :-
+	L_conc_M != "x2+.x3+.x5+",
+	conc(_,_,L_conc_M).
+
+
+
+
+viz(L_or_M,"style=dotted,color=grey") :-
+ 	or(_,_,L_or_M).
+
+viz(L_plus,"color=grey,style=dashed") :-
+ 	plus(_,L_plus).
+
+viz(R, "constraint=false") :-
+  	derived(R).

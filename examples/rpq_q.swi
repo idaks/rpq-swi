@@ -1,0 +1,11 @@
+%plus(in).
+%or(or(a,d), plus(conc(b,c))).
+%or(conc(a,d), plus(conc(b,c))).
+or(conc(a,d), plus(conc(b,c))).
+% star(conc(
+%      star(
+% 	  or( b, w )),
+%      star(
+% 	  or( b, l ))
+%     )).
+

@@ -1,0 +1,33 @@
+% ans(X,"<",Y) :-
+% 	before(X,Y).
+
+ans(X,L,Y) :- e(X,L,Y). %, not derived(L).
+%ans(X,L,Y) :- e(X,L,Y), root(L).
+
+ans(X,"cyc",X) :-
+  	before(X,X).
+% ans(X,"good",X) :-
+% 	before(X,X),
+% 	ans(_,"ok",X).
+
+
+% ans(X,"ok",Y) :-
+% 	e(X,L,Y), not derived(L), not before(X,X).
+
+
+
+viz("initial","color=green,constraint=false").
+viz("good","color=green").
+viz("ok","color=blue").
+viz("cyc","color=red").
+viz(L_conc_M,"style=dotted,color=blue,constraint=false") :-
+	conc(_,_,L_conc_M).
+
+viz(L_or_M,"style=dotted,color=forestgreen,constraint=false") :-
+ 	or(_,_,L_or_M).
+
+viz(L_plus,"style=dotted,color=red,constraint=false") :-
+ 	plus(_,L_plus).
+
+viz(R, "constraint=false") :-
+ 	derived(R).

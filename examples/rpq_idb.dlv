@@ -1,0 +1,45 @@
+% To limit the search, we instantiate conc/3, or/3, plus/2, etc.
+% only with a finite set of "relevant" query expressions
+% For example, in principle, conc/3 is an infinite table
+% conc(X,Y, X.Y) :- expression(X), expression(Y).
+
+
+
+% This is the RPQ engine 
+e(X,L_conc_M,Y) :-
+	conc(L,M, L_conc_M),
+	e(X,L,Z),
+	e(Z,M,Y).
+
+e(X,L_or_M,Y) :-
+	or(L,_, L_or_M),
+	e(X,L,Y).
+e(X,L_or_M,Y) :-
+	or(_,M, L_or_M),
+	e(X,M,Y).
+
+e(X,L_plus,Y) :-
+	plus(L, L_plus),
+	e(X,L,Y).
+e(X,L_plus,Y) :-
+	plus(L, L_plus),
+	e(X,L,Z),
+	e(Z,L_plus,Y).
+
+e(X,L_star,X) :- star(L, L_star),
+	e(X,L,X).
+e(X,L_star,Y) :- star(L, L_star),
+	e(X,L,Z),
+	e(Z,L_star,Y).
+
+
+
+derived(R) :-
+	conc(_,_,R).
+derived(R) :-
+	or(_,_,R).
+derived(R) :-
+	plus(_,R).
+derived(R) :-
+	star(_,R).
+

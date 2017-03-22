@@ -1,0 +1,15 @@
+%or(or(a,d), plus(conc(b,c))).
+% RPQ = (a.d | (b.c)+)
+%conc(a,d).
+%plus(conc(b,c)).
+
+or(conc(a,d), plus(conc(b,c))).
+% plus(conc(c,b)).
+
+ %% star(conc(
+ %%      star(
+ %% 	  or( b, w )),
+ %%      star(
+ %% 	  or( b, l ))
+ %%     )).
+

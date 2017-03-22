@@ -1,0 +1,36 @@
+% This is the RPQ engine 
+e(X,L_conc_M,Y) :- conc(L,M, L_conc_M),
+	e(X,L,Z),
+	e(Z,M,Y).
+
+e(X,L_or_M,Y) :- or(L,_, L_or_M),
+	e(X,L,Y).
+e(X,L_or_M,Y) :- or(_,M, L_or_M),
+	e(X,M,Y).
+
+e(X,L_plus,Y) :- plus(L, L_plus),
+	e(X,L,Y).
+e(X,L_plus,Y) :- plus(L, L_plus),
+	e(X,L,Z),
+	e(Z,L_plus,Y).
+
+e(X,L_star,X) :- star(_, L_star),
+	e(X,_,_).
+e(X,L_star,X) :- star(_, L_star),
+	e(_,_,X).
+e(X,L_star,Y) :- star(L, L_star),
+	e(X,L,Z),
+	e(Z,L_star,Y).
+
+
+% before(X,Y) :- e(X,_,Y).
+% before(X,Y) :- e(X,_,Z), before(Z,Y).
+
+derived(R) :-
+	conc(_,_,R).
+derived(R) :-
+	or(_,_,R).
+derived(R) :-
+	plus(_,R).
+
+
